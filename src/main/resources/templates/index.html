@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Процесс работы</title>
+</head>
+<body>
+   <table width="700px" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+      <td>
+        <p> Принцип работы одного окна. Поступает какое-то количество заявок в работу. Существует несколько операторов (потоков), которые обрабатывают их в соответствии 
+        с приоритетом заявки. Нумерация заявок автоматическая. Имитация работы обозначается задержкой в 0,1 сек. Рандом определяет удачно ли обработана заявка или нет.</p>
+        <p> В примере 3 оператора, 7 заявок.</p>
+        <form action="" method="POST">
+            <input type="submit" value="Начать обработку" size="20" style="background-color:#CCC; color:black" />
+        </form></br></br>
+<!--		<span th:text="${outPutInfo.getRobot().getRobotName()} + ' выполнил задачу ' + ${outPutInfo.getTask().getTaskId()} ">xx</span><br> -->
+
+        <table width="300px" border="1" cellspacing="0" cellpadding="0" align="center">
+          <tr>
+            <td align="center">Робот</td>
+            <td align="center">Номер задачи</td>
+            <td align="center">Успешно</td>
+          </tr>
+         <div th:each="outPutInfo : ${outPutInfos}">
+         <tr>
+            <td width="100" align="center"><span th:text="${outPutInfo.getRobot().getRobotName()}">x</span></td>
+            <td width="150" align="center"><span th:text="${outPutInfo.getTask().getTaskId()}">x</span></td>
+            <td  align="center"><span th:text="${outPutInfo.getTask().isFulfilledTask()}">x</span></td>
+         </tr>
+        </div>
+        </table>
+	   
+      </td>
+     </tr>
+    </table>   
+</body>
+</html>
